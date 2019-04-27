@@ -3,6 +3,97 @@
     padding:0;
     list-style: none;
     body{
-        
+        width:100vw;
+        height:100vh;
+        font-size: 16px;
+        .nav-box{
+            width: 100%;
+            overflow: scroll;
+            height: 44px;
+            .ui-tab-nav {
+                width: max-content;
+                display: block;
+                padding-right: 40px;
+                li{
+                    position: relative;
+                    display: inline;
+                    &.current{
+                        color: #d23b2a;
+                        span:before {
+                            height: 2px;
+                            background-color: #d23b2a;
+                        }
+                    }
+                }
+            }
+        }
+        .ui-tab-content{
+            transition: none!important;
+            .ui-list-img-square{
+                height: 70px;
+                span{
+                    border-radius:6px;
+                }
+            }
+            .ui-list-info {
+                display: block;
+                h4{    
+                    margin-bottom: 10px;
+                }
+            }
+        }
+        .right-nav{
+            width: 40px;
+            height: 44px;
+            line-height: 44px;
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #fff;
+            text-align: center;
+        }
+        .nav-panel{
+            position: absolute;
+            top:0;
+            left: 0;
+            display: none;
+            width:100vw;
+            height:100vh;
+            background:#fff;
+            padding: 0 20px;
+            box-sizing: border-box;
+            &.show{
+                display: block;
+            }
+            .close-btn{
+                position: absolute;
+                right:10px;top:10px;
+            }
+            .nav-content{
+                text-align: center;
+                h4{
+                    line-height: 44px;
+                    margin-bottom:20px;
+                }
+                .title{
+                    text-align: left;
+                    line-height: 40px;
+                    font-size: 14px;
+                    color: #d23b2a;
+                }
+                li{
+                    padding:5px;
+                    a{
+                        background:#fafafa;
+                        padding:5px;
+                        font-size: 14px;
+                        color:#333;
+                        display: block;
+                        height:42px;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
     }
 }
