@@ -1,0 +1,34 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8"><meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta name="format-detection" content="telephone=no,email=no"><style type="text/css">
+        #tour {
+            max-width: 100%;
+            width: 512px;
+            overflow-x: hidden;
+            position: relative;
+            -webkit-transform: translateZ(0);
+        }
+        #tour img {
+            max-width: 500%;
+        }
+    </style></head><body><!DOCTYPE HTML><html lang="en-US"><head><meta charset="UTF-8"><title>Zepto Demo</title></head><body><div id=tour> <img src=data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=></div><script src="http://zeptojs.com/zepto.min.js"></script><script>
+    // For retina screens, use a hi-res version of the tour image.
+    // We're swapping this out on-demand (not an ideal solution)
+    // to avoid rendering bugs on iOS.
+    $('#tour > img')[0].src =('devicePixelRatio' in window && devicePixelRatio > 1) ? 'http://zeptojs.com/intro2x.jpg' : 'http://zeptojs.com/intro.jpg'
+
+
+    var tour = $('#tour'), tourSlides = tour.children(),tourSlide = 0, tourSlidesTotal = 5;
+
+
+    function advanceTourSlide(delta) {
+        tourSlide = (tourSlide + delta + tourSlidesTotal) % tourSlidesTotal;
+        var offset = tourSlide * tour.width();
+        tourSlides.animate({ translateX:-offset + 'px' });
+    }
+
+
+    tour.on('click swipeLeft', function () {
+        advanceTourSlide(+1)
+    }).on('swipeRight', function () {
+                advanceTourSlide(-1)
+            })
+</script></body></html></body></html>

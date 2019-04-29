@@ -15,6 +15,9 @@
         .wrapper{
             width:100vw;
             height:100vh;
+            .ui-btn-primary{
+                background-color:#e04e3c;
+            }
             .ui-border-r{
                 color:#666;
                 .iconfont{
@@ -81,6 +84,13 @@
                         span{
                             border-radius:6px;
                         }
+                        label{
+                            position: absolute;
+                            right:8px;
+                            bottom:4px;
+                            color:#fff;
+                            font-size:12px;
+                        }
                     }
                     .ui-list-info {
                         display: block;
@@ -100,8 +110,10 @@
                                 }
                             }
                             p{
-                                height:45px;
+                                height:22px;
                                 overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
                             }
                         }
                     }
@@ -433,8 +445,67 @@
                     }
                 }
             }
+            &.examination-info{
+                .fixed-header {
+                    position: fixed;
+                    width: 100%;
+                    z-index: 100;
+                    left: 0;
+                    top:0;
+                    height: 100px;
+                    padding: 20px 15px;
+                    box-sizing: border-box;
+                    &:before {
+                        border-bottom: 10px solid #f5f5f5;
+                        content: '';
+                        display: block;
+                        width: 100%;
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        -webkit-transform-origin: left bottom;
+                    }
+                    .fixed-title{
+                        display: flex;
+                        .left{
+                            flex:1;
+                            div{
+                                line-height: 30px;
+                            }
+                            p{
+                                color:#999;
+                                font-size: 14px;
+                                .iconfont{
+                                    font-size: 14px;
+                                    padding-right: 3px;
+                                }
+                            }
+                        }
+                        .right{
+                            text-align: right;
+                            color:#999;
+                            span{
+                                font-size: 40px;
+                                color:#000;
+                                padding-right: 5px;
+                            }
+                        }
+                    }
+                }
+                .fixed-header~.ui-container {
+                    border-top: 100px solid transparent;
+                }
+                .slider-content{
+                    padding:15px;
+                    .headline{
+                        margin-bottom:15px; 
+                        font-weight: bold;
+                    }
+                }
+            }
             &.selective-course,
-            &.required-courses{
+            &.required-courses,
+            &.my-courses{
                 .ui-tab-nav {
                     li{
                         &.current{
@@ -449,7 +520,6 @@
                         }
                     }
                 }
-                .ui-tab-content{
                     .ui-list-img-square{
                         height: 70px;
                         span{
@@ -478,7 +548,6 @@
                                 overflow: hidden;
                             }
                         }
-                    }
                 }
             }
         }
