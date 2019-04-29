@@ -1,0 +1,19 @@
+/* 浮动 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/* 清除浮动公共样式 */
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}

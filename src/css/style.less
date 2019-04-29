@@ -15,7 +15,7 @@
         .wrapper{
             width:100vw;
             height:100vh;
-            .ui-btn-primary{
+            .ui-btn-primary,.ui-btn-primary.active, .ui-btn-primary:not(.disabled):not(:disabled):active{
                 background-color:#e04e3c;
             }
             .ui-border-r{
@@ -496,10 +496,16 @@
                     border-top: 100px solid transparent;
                 }
                 .slider-content{
-                    padding:15px;
-                    .headline{
-                        margin-bottom:15px; 
-                        font-weight: bold;
+                    .slide-zone{
+                        li{
+                            float:left;
+                            padding:15px;
+                            box-sizing: border-box;
+                            .headline{
+                                margin-bottom:15px; 
+                                font-weight: bold;
+                            }
+                        }
                     }
                 }
             }
@@ -524,6 +530,13 @@
                         height: 70px;
                         span{
                             border-radius:6px;
+                        }
+                        label{
+                            position: absolute;
+                            right:8px;
+                            bottom:4px;
+                            color:#fff;
+                            font-size:12px;
                         }
                     }
                     .ui-list-info {
