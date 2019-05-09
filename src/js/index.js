@@ -9,7 +9,7 @@
         location.href = 'index.html';
     });
 
-    var navLen = $('.ui-tab-nav li').length;
+    var navLen = $('.ui-tab-content > li').length;
     $('.ui-tab-content').css('width',navLen+'00%');
     
     $('.ui-tab-nav').eq(0).find('li').on('click', function () {

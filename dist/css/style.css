@@ -8,6 +8,8 @@
   height: 100vh;
   font-size: 4.267vw !important;
   background: #fff;
+  /* 下拉、上拉提示信息 */
+  /* 全局提示信息 */
 }
 * body .color-red {
   color: #d23b2a;
@@ -16,6 +18,7 @@
 * body .wrapper {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 * body .wrapper .ui-btn-primary,
 * body .wrapper .ui-btn-primary.active,
@@ -84,6 +87,8 @@
 }
 * body .wrapper.main-page .ui-tab-content {
   transition: none!important;
+  height: calc(100vh - 99px);
+  overflow: auto;
 }
 * body .wrapper.main-page .ui-tab-content .ui-list-img-square {
   height: 70px;
@@ -567,6 +572,48 @@
 * body .wrapper.my-courses .ui-row li p {
   height: 45px;
   overflow: hidden;
+}
+* body .list-wrapper {
+  position: fixed;
+  z-index: 1;
+  top: 44px;
+  bottom: 55px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+* body .top-tip {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #555;
+}
+* body .bottom-tip {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #777;
+  background: #f2f2f2;
+}
+* body .alert {
+  display: none;
+  position: fixed;
+  top: 55px;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  background: rgba(7, 17, 27, 0.7);
 }
 html {
   font-size: 4.267vw !important;
