@@ -1,6 +1,6 @@
 
 (function () {
-    $('.ui-list li,.ui-tiled li, .ui-href li').click(function () {
+    $('.ui-list,.ui-tiled, .ui-href').on('touchstart','li',function (e) {
         if ($(this).data('href')) {
             location.href = $(this).data('href');
         }
