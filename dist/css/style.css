@@ -242,6 +242,9 @@
   height: 80px;
   border-radius: 50%;
 }
+* body .wrapper.rankingList-center .ui-container .myNumber .num {
+  font-size: 24px;
+}
 * body .wrapper.rankingList-center .ui-container .ranking-content {
   background: #fff;
   width: 90%;
