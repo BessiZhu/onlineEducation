@@ -15,7 +15,6 @@
         .wrapper{
             width:100vw;
             height:100vh;
-            overflow: hidden;
             .ui-btn-primary,.ui-btn-primary.active, .ui-btn-primary:not(.disabled):not(:disabled):active{
                 background-color:#e04e3c;
             }
@@ -54,6 +53,7 @@
                 background:#fff;
             }
             &.main-page{
+                overflow: hidden;
                 .nav-box{
                     width: 100%;
                     overflow: scroll;
@@ -211,6 +211,76 @@
                         }
                         .iconfont{
                             font-size:40px;
+                        }
+                    }
+                }
+            }
+            &.rankingList-center{
+                .ui-container{
+                    width:100vw;
+                    height:100vh;
+                    background-image:url(../images/rankingList.jpg);
+                    background-size:100% auto;
+                    .myNumber{
+                        display: flex;
+                        text-align: center;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        width: 70%;
+                        margin: 0 auto;
+                        padding: 20px 0;
+                        color: #fff;
+                        .avatar{
+                            img{
+                                widows: 8px;
+                                height:80px;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                    .ranking-content{
+                        background:#fff;
+                        width:90%;
+                        border-radius: 6px;
+                        margin:0 auto;
+                        padding:15px;
+                        box-sizing: border-box;
+                        .ui-list li{
+                            margin-left:0;
+                            div{
+                                padding:11px 5px;
+                                display: flex;
+                                align-items: center;
+                                &.avatar{
+                                    img{
+                                        width:50px;
+                                        height:50px;
+                                        border-radius: 6px;
+                                    }
+                                }
+                                &.ui-list-info{
+                                    color:#333;
+                                }
+                                &.credit{
+                                    p{
+                                        color:#07abf7;
+                                    }
+                                }
+                            }
+                            .iconfont{
+                                font-size: 24px;
+                                vertical-align: bottom;
+                                color:#666;
+                            }
+                            &:first-of-type .iconfont{
+                                color:#fc2b02;
+                            }
+                            &:nth-of-type(2) .iconfont{
+                                color:#07abf7;
+                            }
+                            &:nth-of-type(3) .iconfont{
+                                color:#04d115;
+                            }
                         }
                     }
                 }
