@@ -195,13 +195,17 @@
     </div>
     <div class="alert alert-hook">刷新成功</div>
 
-    <script src="../js/zepto.js"></script>
+    <script src="../js/zepto.min.js"></script>
     <script src="../js/bscroll.js"></script>
     <script src="../js/index.js"></script>
     <script src="../js/refresh.js"></script>
-
+    <script src="../js/fastclick.js"></script>
 
     <script>
+
+        $(function() {
+            FastClick.attach(document.body);
+        })
 
         $("#navbtn").click(function () {
             $("#allNav").addClass("show");
