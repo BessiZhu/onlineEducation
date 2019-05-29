@@ -64,7 +64,7 @@ html {
 }
 .wrapper.main-page .nav-box {
   width: 100%;
-  overflow: scroll;
+  overflow: hidden;
   height: 44px;
 }
 .wrapper.main-page .nav-box .ui-tab-nav {
@@ -576,6 +576,10 @@ html {
 .wrapper.examination-info .slider-content .slide-zone li .headline {
   margin-bottom: 15px;
   font-weight: bold;
+}
+.wrapper.examination-info .slider-content .slide-zone li input {
+  border: none;
+  border-bottom: 1px solid #000;
 }
 .wrapper.selective-course .ui-tab-nav li.current,
 .wrapper.required-courses .ui-tab-nav li.current,

@@ -43,9 +43,9 @@
                         <ul class="ui-tab-nav ui-border-b ">
                             <li data-id="1" class="current"><span>技术标准培训</span></li>
                             <li data-id="2"><span>经济管理</span></li>
-                            <li data-id="3"><span>施工组织设计编制培训</span></li>
+                            <li data-id="3"><span>制培训</span></li>
                             <li data-id="4"><span>专业课程</span></li>
-                            <li data-id="5"><span>专项施工方案编制培训</span></li>
+                            <li data-id="5"><span>施工专项</span></li>
                             <li data-id="6"><span>项目管理</span></li>
                             <li data-id="7"><span>法律法规</span></li>
                         </ul>
@@ -125,6 +125,8 @@
                                         </li>
                                     </ul>
                                 </li>
+                                <li>2222</li>
+                                <li>3333</li>
                             </ul>
                             <div class="bottom-tip">
                                 <span class="loading-hook">上拉加载更多</span>
@@ -197,22 +199,17 @@
 
     <script src="../js/zepto.min.js"></script>
     <script src="../js/bscroll.js"></script>
-    <script src="../js/index.js"></script>
+    <script src="../js/iscroll.js"></script>
     <script src="../js/refresh.js"></script>
     <script src="../js/fastclick.js"></script>
+    <script src="../js/index.js"></script>
 
     <script>
-
-        $(function() {
-            FastClick.attach(document.body);
+        var myScroll= new IScroll('.nav-box', {
+            mouseWheel:true
         })
 
-        $("#navbtn").click(function () {
-            $("#allNav").addClass("show");
-        });
-        $(".close-btn").click(function () {
-            $("#allNav").removeClass("show");
-        });
+        
         initScroll(0);
     </script>
 </body>

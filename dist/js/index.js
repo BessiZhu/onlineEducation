@@ -1,4 +1,8 @@
 (function () {
+    
+    $(function() {
+        FastClick.attach(document.body);
+    })
 
     // 点击li跳转到详情页
     $('.ui-list, .ui-tiled, .ui-href').on('click', function (e) {
@@ -7,51 +11,159 @@
         }
     })
 
-    $('.ui-header .ui-btn').click(function () {
-        location.href = 'index.html';
+    // 显示隐藏全部菜单界面
+    $("#navbtn").click(function () {
+        $("#allNav").addClass("show");
+    });
+    $(".close-btn").click(function () {
+        $("#allNav").removeClass("show");
     });
 
-    // 点击全部菜单中的列表项，加载对应的视频数据
+//-------------------------------------------------------------------------------------------------------
+
+   /*获取左侧栏的高度*/
+   var leftWidth=$(".nav-box").width();
+   /*获取用来滑动的列表*/
+   var ulBox=$(".nav-box ul");
+   var ulBoxWidth=$(".nav-box ul").width();
+
+   /*获取所有li元素*/
+   var lis=$(".nav-box ul li");
+
+   /*设置静止状态下的最大top值*/
+   var maxLeft=0;
+   /*设置静止状态下的最小的top值*/
+   var minLeft=leftWidth-ulBoxWidth;
+   /*设置滑动状态下的最大的top值*/
+   var maxBounceLeft=maxLeft;
+   /*设置滑动状态下的最小top值*/
+   var minBounceLeft=minLeft;
+
+   /*实现滑动*/
+   var startX=0;
+   var moveX=0;
+   var distanceX=0;
+   /*记录当前元素滑动到的距离*/
+   var currentX=0;
+
+   /*添加滑动事件*/
+   ulBox.on("touchstart",function(e){
+       /*获取手指的起始坐标*/
+       startX= e.targetTouches[0].clientX;
+   });
+   ulBox.on("touchmove",function(e){
+       moveX= e.targetTouches[0].clientX;
+       /*计算距离的差异*/
+       distanceX=moveX-startX;
+       /*判断滑动的时候是否超出当前指定的滑动区间*/
+       if(currentX+distanceX > maxBounceLeft || currentX+distanceX < minBounceLeft){
+           console.log("超出范围啦");
+           return;
+       }
+       /*先将之前可能添加的过渡效果清除*/
+       ulBox.css({"transition":"none","left":(currentX+distanceX)+"px"});
+   });
+   ulBox.on("touchend",function(e){
+       /*判断当前滑动的距离是否在静止状态和滑动状态下的最小Left值之间*/
+       if(currentX+distanceX < minLeft){
+           currentX=minLeft;
+           /*回到minLeft位置*/
+           ulBox.css({"left":minLeft+"px"})
+       }
+       else if(currentX+distanceX > maxLeft){
+           currentX=maxLeft;
+           /*回到maxLeft位置*/
+           ulBox.css({"left":maxLeft+"px"})
+       }
+       else{
+           /*记录当前滑动的距离*/
+           currentX+=distanceX;
+       }
+   });
+
+//-------------------------------------------------------------------------------------------------------
+
+
+
+
+    /* 点击全部菜单中的列表项，加载对应的视频数据 */
     $('#allNav .ui-col').on('click', function (e) {
         var dWidth = $(window).width();
         // 1.头部列表对应的标签高亮
         $('.ui-tab-nav li').each(function (index, ele) {
-
-            // console.log($(e.target))
+            // 遍历顶部菜单列表
             if ($(ele).attr('data-id') == $(e.target).parent().attr('data-id')) {
+                // 将对应的菜单设置样式
                 $(ele).addClass('current');
+                // 显示对应的数据
                 $('.ui-tab-content').animate({
-                    transform: 'translate3d(' + index * dWidth + 'px, 0px, 0px)'
+                    transform: 'translate3d(' + - (index * dWidth) + 'px, 0px, 0px)'
                 })
+                // 隐藏所有菜单界面
                 $('#allNav').removeClass('show');
+
                 // 设置顶部菜单焦点位置
-                var liWidth;
-                for (var i = 0; i <= index; i++) {
+                var liWidth = 0, ulWidth = ulBox.width();
+                for (var i = 0; i < index - 1; i++) {
                     liWidth += $('.ui-tab-nav li').eq(i).width()
                 }
-                console.log(liWidth)
-                $(".nav-box ul").animate({
-                    transform: 'translate3d(' + liWidth + 'px, 0px, 0px)'
-                })
+                if (ulWidth - liWidth < dWidth) {
+                    /*只能偏移到不超出ul宽度的位置*/
+                   ulBox.css({"left": -(ulWidth - dWidth)+"px"})
+                   currentX=maxLeft;
+                }
+                else if(liWidth <= minLeft){
+                    currentX=minLeft;
+                    /*回到minLeft位置*/
+                    ulBox.css({"left":minLeft+"px"})
+                }
+                 else {
+                    ulBox.css({"left": -liWidth+"px"})
+                    currentX += -liWidth;
+                }
+                console.log(currentX)
+                // if(currentX+distanceX < minLeft){
+                //     console.log(888)
+                //     currentX=minLeft;
+                //     /*回到minLeft位置*/
+                //     ulBox.css({"left":minLeft+"px"})
+                // }
+                // else if(currentX+distanceX > maxLeft){
+                //     console.log(999)
+                //     currentX=maxLeft;
+                //     /*回到maxLeft位置*/
+                //     ulBox.css({"left":maxLeft+"px"})
+                // }
+                // else{
+                //     ulBox.css({"left": -liWidth+"px"})
+                //     console.log(111)
+                //     /*记录当前滑动的距离*/
+                //     currentX+=distanceX;
+                // }
+               
 
             } else {
                 $(ele).removeClass('current');
             }
         })
+    })
 
+    /* 初始化index页面内容的宽度 */
+    var navLen = $('.ui-tab-content > li').length;
+    $('.ui-tab-content').css('width', navLen + '00%');
 
+    $('.ui-tab-nav').eq(0).find('li').on('click', function () {
+        $(this).parent().find('li').removeClass('current');
+        $(this).addClass('current');
+        $('.ui-tab-content').eq(0).css({
+            'transform': 'translate3d(-' + ($(this).index() * $('.ui-tab-content li').offset().width) + 'px,0,0)',
+            'transition': 'transform 0.5s linear'
+        })
+    });
 
-        var navLen = $('.ui-tab-content > li').length;
-        $('.ui-tab-content').css('width', navLen + '00%');
+    /* 点击考试列表a标签跳转到考试详情页面 */
+    $('.start-btn').on('click',function(){
+        location.href = 'examinationInfo.html';
+    })
 
-        $('.ui-tab-nav').eq(0).find('li').on('click', function () {
-            $(this).parent().find('li').removeClass('current');
-            $(this).addClass('current');
-            $('.ui-tab-content').eq(0).css({
-                'transform': 'translate3d(-' + ($(this).index() * $('.ui-tab-content li').offset().width) + 'px,0,0)',
-                'transition': 'transform 0.5s linear'
-            })
-        });
-
-
-    })(window, undefined)
+})(window, undefined)
