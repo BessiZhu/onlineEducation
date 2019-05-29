@@ -140,6 +140,7 @@ html {
   top: 0;
   background: #fff;
   text-align: center;
+  cursor: pointer;
 }
 .wrapper.main-page .nav-panel {
   position: absolute;
