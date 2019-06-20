@@ -6,11 +6,11 @@
 body {
   width: 100vw;
   height: 100vh;
-  font-size: 4.267vw !important;
+  font-size: 4.267vw!important;
   background: #fff;
 }
 html {
-  font-size: 4.267vw !important;
+  font-size: 4.267vw!important;
 }
 .color-red {
   color: #d23b2a;
@@ -50,7 +50,7 @@ html {
 .wrapper .info-title:before {
   position: absolute;
   left: 0;
-  top: 0.8vw;
+  top: .8vw;
   background-color: #e32416;
   content: "";
   height: 1rem;
@@ -68,8 +68,6 @@ html {
   height: 44px;
 }
 .wrapper.main-page .nav-box .ui-tab-nav {
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   display: block;
   padding-right: 40px;
@@ -150,16 +148,14 @@ html {
   background: #fff;
   padding: 0 20px;
   box-sizing: border-box;
-  -webkit-transform: translateY(-100vh);
-          transform: translateY(-100vh);
+  transform: translateY(-100vh);
   transition: all 0.3s linear;
   z-index: 9999;
   overflow: auto;
   opacity: 0;
 }
 .wrapper.main-page .nav-panel.show {
-  -webkit-transform: translateY(0);
-          transform: translateY(0);
+  transform: translateY(0);
   opacity: 1;
 }
 .wrapper.main-page .nav-panel .close-btn {
@@ -291,6 +287,7 @@ html {
   color: #04d115;
 }
 .wrapper.vedio-info .xxqg-article-content {
+  -webkit-box-sizing: border-box;
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
@@ -349,6 +346,7 @@ html {
 }
 .wrapper.vedio-info .xxqg-article-content #xxqg-article-body .video-desc {
   background-color: #fff;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 4.267vw;
   padding: 4.267vw 0;
@@ -372,6 +370,7 @@ html {
   content: "viewport-units-buggyfill; height: 4.267vw; font-size: 3.2vw; line-height: 4.267vw";
 }
 .wrapper.vedio-info .xxqg-article-content #xxqg-article-body .video-info {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 4.267vw;
   border-top: 1px solid #f7f7f7;
@@ -393,7 +392,7 @@ html {
 .wrapper.vedio-info .xxqg-article-content #xxqg-article-body .video-info .info-title:before {
   position: absolute;
   left: 0;
-  top: 0.8vw;
+  top: .8vw;
   background-color: #e32416;
   content: "";
   height: 1rem;
@@ -401,7 +400,7 @@ html {
 }
 .wrapper.vedio-info .xxqg-article-content #xxqg-article-body .video-info .info-detail {
   position: relative;
-  font-size: 0.875rem;
+  font-size: .875rem;
   line-height: 1.375rem;
   color: #666;
   overflow: hidden;
